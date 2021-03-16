@@ -1,12 +1,12 @@
 [package]
-name = "hotpot-db"
+name = "et"
 version = "0.0.2"
 authors = ["David Holtz <david.richard.holtz@gmail.com>"]
 edition = "2018"
-description = "🌶 hottest way to store data on the web. If you like JSON and dealing with things later"
+description = "🌶 het hottest way to store data on the web."
 keywords = ["database", "storage", "sqlite", "nosql", "json"]
-homepage = "https://github.com/drbh/hotpot-db"
-repository = "https://github.com/drbh/hotpot-db.git"
+homepage = "https://github.com/yuulive"
+repository = "https://github.com/yuulive/et"
 readme = "README.md"
 license = "MIT"
 

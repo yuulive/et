@@ -1,4 +1,4 @@
-use hotpot_db::*;
+use et::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -7,8 +7,8 @@ struct Person {
     age: u8,
 }
 
-fn main() -> Result<(), hotpot_db::Error> {
-    let mut pot = HotPot::new(".");
+fn main() -> Result<(), et::Error> {
+    let mut pot = Et::new(".");
 
     // lets make a new collection
     pot.create_collection("address_book")?;

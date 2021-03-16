@@ -1,17 +1,13 @@
-# hotpot-db
+# et
 
-[![crates.io](https://meritbadge.herokuapp.com/hotpot-db)](https://crates.io/crates/hotpot-db)
+[crates.io](https://crates.io/crates/et)
 
-_Warning: API is not finished and may be subject to change. New features and documentation will be added before 1.0 stable release_
+### Et - the 🌶🌶🌶 hottest way to store data
 
-<img width="500px" src="https://66.media.tumblr.com/dc1e0c3d4372dd7a763cb3abba5c07b4/tumblr_ogk0t7i51o1vj3zbeo1_500.gif"/>
-
-### The 🌶🌶🌶 hottest way to store data
-
-hotpot-db is a spicy, incredibly easy to use, and delicious database system.
+et is a spicy, incredibly easy to use, and delicious database system.
 
 ```bash
-hotpot_db = "0.0.2"
+et = "0.0.1"
 ```
 
 ## Flavor Palette
@@ -26,7 +22,7 @@ hotpot_db = "0.0.2"
 
 ## Example
 ```rust
-use hotpot_db::*;
+use et::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -35,9 +31,9 @@ struct Person {
     age: u8,
 }
 
-fn main() -> Result<(), hotpot_db::Error> {
+fn main() -> Result<(), et::Error> {
     // must pass a path to init
-    let mut pot = HotPot::new(".");
+    let mut pot = Et::new(".");
 
     // lets make a new collection
     pot.create_collection("address_book")?;
@@ -72,7 +68,7 @@ fn main() -> Result<(), hotpot_db::Error> {
 
 ## Recipe
 
-hotpot-db is made from few, but time tasted ingredients. It is a new approach to an old dish. 
+et is made from few, but time tasted ingredients. It is a new approach to an old dish. 
 
 **Ingredients**
 1. 1 cup, `SQLite 3.30.1`
@@ -82,15 +78,15 @@ hotpot-db is made from few, but time tasted ingredients. It is a new approach to
 ## Concepts
 
 #### Collection  
-In a technical sense, a collection is just a table in SQLite, that stores data in a specific format. Each row is an `Entry` which consists of three columns: id, time_created, data. The data column holds each JSON object and the other columns are used as hotpot-db metadata.  
+In a technical sense, a collection is just a table in SQLite, that stores data in a specific format. Each row is an `Entry` which consists of three columns: id, time_created, data. The data column holds each JSON object and the other columns are used as et metadata.  
 
-In theory, a collection should house similar data to make it easier to manage, but hotpot-db doesn't care about schema so you can store any kind of object in a single collection.
+In theory, a collection should house similar data to make it easier to manage, but et doesn't care about schema so you can store any kind of object in a single collection.
 
 #### Objects
 
-Each entry contains an object and the are the heart of hotpot-db. Objects are special because you can query their contents efficiently. 
+Each entry contains an object and the are the heart of et. Objects are special because you can query their contents efficiently. 
 
-This is an advantage over storing JSON in other datastores since you don't have to read the full object to query the contents. hotpot-db wraps SQLite's json1 extension into an easy to use API. 
+This is an advantage over storing JSON in other datastores since you don't have to read the full object to query the contents. et wraps SQLite's json1 extension into an easy to use API. 
 
 
 ## Speed Estimates
@@ -101,7 +97,7 @@ Objects allow us to store schemaless data and still search through it efficientl
 
 In a hot pot you can only query in two different ways. You can check the contents of an array or the attribute/values of an object.
 
-hotpot-db offers the developer a simple QueryBuilder that allows you to conveniently write and read your queries. 
+et offers the developer a simple QueryBuilder that allows you to conveniently write and read your queries. 
 
 #### Querying Arrays
 ```rust
@@ -126,9 +122,9 @@ let query = QueryBuilder::new()
 
 ### Changelogs
 
-- March 24th, PR to allow user to specify location of the database, thanks @juzi5201314 for the clean code https://github.com/drbh/hotpot-db/pull/3
+- March 24th, PR to allow user to specify location of the database, thanks @juzi5201314 for the clean code https://github.com/drbh/et/pull/3
 
 - March 25th allow user to overwrite entries at specific index with new API `upsert_at_index`
 
-- March 26th change Option to enum. Avoid the possibility of unexpected results from overloaded input. thanks @HiruNya for pointing this bug out https://github.com/drbh/hotpot-db/issues/2
+- March 26th change Option to enum. Avoid the possibility of unexpected results from overloaded input. thanks @HiruNya for pointing this bug out https://github.com/drbh/et/issues/2
 

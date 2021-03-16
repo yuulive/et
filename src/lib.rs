@@ -7,7 +7,7 @@ use std::path::Path;
 use std::time::{SystemTime, UNIX_EPOCH};
 
 #[derive(Debug)]
-pub struct HotPot {
+pub struct Et {
     pub conn: Connection,
     pub collections: HashMap<String, Collection>,
 }
@@ -155,13 +155,13 @@ impl QueryBuilder {
     }
 }
 
-impl HotPot {
-    pub fn new<P: AsRef<Path>>(path: P) -> HotPot {
+impl Et {
+    pub fn new<P: AsRef<Path>>(path: P) -> Et {
         let path = path.as_ref();
         if !path.exists() {
             panic!(format!("The path {:?} does not exist!", path))
         }
-        let mut hp = HotPot {
+        let mut hp = Et {
             conn: Connection::open(path.join("database.hpdb")).unwrap(),
             collections: HashMap::new(),
         };
@@ -370,7 +370,7 @@ impl Collection {
         &self,
         conn: &Connection,
         cname: &str,
-        hotpot_id_for_entry: usize,
+        et_id_for_entry: usize,
         value: String,
     ) -> rusqlite::Result<()> {
         let me = NewEntry {
@@ -381,7 +381,7 @@ impl Collection {
             &format!(
                 "INSERT OR REPLACE INTO {} (id, time_created, data)
                   VALUES ({}, ?1, ?2)",
-                cname, hotpot_id_for_entry
+                cname, et_id_for_entry
             ),
             params![me.time_created, me.data.to_string()],
         )?;
